@@ -1,5 +1,5 @@
 # Microsoft-Bot-Application-Remote-HTTPS
-This repos is an example Microsoft Bot application, a simple echo app. You'll be using HTTPS to communicate with the bot. Information is provided on how to use your own PC to run the bot, no need for Azure or AWS, and have it accessible from the internet. You can access the bot with your own domain (e.g. ngrok.example.com). You won't need to open ports on your router or PC, although you'll have to run your bot in Administrator mode. To do so, you'll need service from ngrok.com. This repos is intended as a proof of concept only.
+This repos contains an example Microsoft Bot application, a simple echo app. You'll be using HTTPS to communicate with the bot. Information is provided on how to use your own PC to run the bot, no need for Azure or AWS, and have it accessible from the internet. You can access the bot with your own domain (e.g. ngrok.example.com). You won't need to open ports on your router or PC, although you'll have to run your bot in Administrator mode. To do so, you'll need service from ngrok.com. This repos is intended as a proof of concept only.
 
 This document assumes that you have installed the requisites for a Microsoft Bot application and have a general understanding of how they are work, and how they are registered. See https://dev.botframework.com/ for more info. If you want to use your own custom domain (e.g. ngrok.example.com), you'll need to be familiar with setting up DNS.
 
@@ -56,11 +56,16 @@ To use ngrok to access your own PC, register a Reserved Domain name of your choi
 Steps to use enable your sub-domain to access your PC's bot (e.g. https://ngrok.example.com). The trick here is to use ngrok's TLS Tunneling feature to terminate the SSL chain with your own SSL certificate. This avoids SSL warnings in browser's and apps.
 
 A. Register your internet domain (e.g. example.com).
+
 B. Register an ngrok Reserved Domain of your choice (e.g. ngrok.example.com).
+
 C. Use ngrok's newly created CNAME address (e.g. 123456890.cname.us.ngrok.io) as your internet domain's CNAME record (value).
+
 D. Create an SSL certificate for your internet sub-domain (e.g. ngrok.example.com). I obtained a free 90 day SSL cert from www.gogetssl.com. They have a very impressive SSL process. You may wish to get a wildcarding SSL if you want SSL on multiple subdomains. I've seen them for as low as $40/year.
+
 E. Put your SSL certificate's private key into a text file (e.g. ngrok.example.com.key) and the certificate into another file (e.g. ngrok.example.com.crt). This will enable SSL termination which avoids the dreaded SSL errors in browsers and apps.
 F. Start ngrok's tls tunneling. 3978 is the port used by the repos app (as described above).
+
 G. You should now be able to user your internet sub-domain (e.g. https://ngrok.example.com) to access the app.
   ```
   ngrok tls -hostname ngrok.example.com -key ngrok.example.com.key -crt ngrok.example.com.crt 3978 
