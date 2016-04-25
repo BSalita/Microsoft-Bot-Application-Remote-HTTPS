@@ -65,10 +65,10 @@ D. Create an SSL certificate for your internet sub-domain (e.g. ngrok.example.co
 
 E. Put your SSL certificate's private key into a text file (e.g. ngrok.example.com.key) and the certificate into another file (e.g. ngrok.example.com.crt). This will enable SSL termination thus avoiding the dreaded SSL errors in browsers and apps.
 
-F. Start ngrok's tls tunneling. 3978 is the port used by the repos app (as described above).
+F. Start ngrok's TLS tunneling. 3978 is the port used by the repos app (as described above).
 
   ```
   ngrok tls -hostname ngrok.example.com -key ngrok.example.com.key -crt ngrok.example.com.crt 3978 
   ```
 
-G. You should now be able to user your internet sub-domain (e.g. https://ngrok.example.com) to access the bot.
+G. You should now be able to use your internet sub-domain (e.g. https://ngrok.example.com) to access the bot.
